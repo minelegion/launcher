@@ -4,6 +4,8 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { theme } from '../lib/theme';
 import type { AppProps } from 'next/app';
+import UserProvider from '../components/UserProvider';
+import { SnackbarProvider } from 'notistack';
 
 const App = (props: AppProps) => {
     const { Component, pageProps } = props;
@@ -21,8 +23,12 @@ const App = (props: AppProps) => {
                 <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
             </Head>
             <ThemeProvider theme={theme}>
-                <CssBaseline />
-                <Component {...pageProps} />
+                <SnackbarProvider>
+                    <CssBaseline />
+                    <UserProvider>
+                        <Component {...pageProps} />
+                    </UserProvider>
+                </SnackbarProvider>
             </ThemeProvider>
         </React.Fragment>
     );
