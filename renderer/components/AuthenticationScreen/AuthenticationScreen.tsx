@@ -19,13 +19,14 @@ const AuthenticationScreen = () => {
         try {
             setDisabled(true);
             const authentication = await Authenticator.getAuth(username, password);
-            const user = new User({ username, password, authentication });
+            const user = new User({ username, authentication });
             await user.save();
             setUser(user);
             enqueueSnackbar("Sikeres bejelentkezés!", {
                 variant: "success",
             });
         } catch(e) {
+            console.error(e);
             enqueueSnackbar("Hibás felhasználónév/jelszó! (Mojang)", {
                 variant: "error",
             });

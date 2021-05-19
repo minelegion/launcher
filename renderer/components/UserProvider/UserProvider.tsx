@@ -34,8 +34,7 @@ const UserProvider = ({ children }: PropsWithChildren<{}>) => {
     const onLoad = async () => {
         try {
             const user = await User.load();
-            await user.logout();
-            if(user) setUser(null);
+            if(user) setUser(user);
         } catch(e) {
             enqueueSnackbar("Hiba lépett fel a bejelentkezés. Kérlek jelentkezz be újra!", {
                 variant: "error",

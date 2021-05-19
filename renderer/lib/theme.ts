@@ -3,6 +3,7 @@ import red from '@material-ui/core/colors/red';
 
 export const theme = createMuiTheme({
     palette: {
+        
         primary: {
             main: "#AA0000",
             contrastText: "#FFFFFF",
@@ -12,6 +13,9 @@ export const theme = createMuiTheme({
         },
         background: {
             default: '#fff',
+        },
+        action: {
+            disabledBackground: "rgb(225, 225, 225)",
         },
     },
 });

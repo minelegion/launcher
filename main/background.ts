@@ -17,6 +17,9 @@ if (isProd) {
     const mainWindow = createWindow('main', {
         width: 1000,
         height: 600,
+        minHeight: 300,
+        minWidth: 300,
+        autoHideMenuBar: true,
     });
 
     ipcMain.on("secure-store-set-request", async (event, key, value) => {

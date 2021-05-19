@@ -21,6 +21,7 @@ const App = (props: AppProps) => {
         <React.Fragment>
             <Head>
                 <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
+                <title>MineLegion</title>
             </Head>
             <ThemeProvider theme={theme}>
                 <SnackbarProvider>

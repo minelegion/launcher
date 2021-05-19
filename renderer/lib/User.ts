@@ -3,18 +3,15 @@ import SecureStore from "./SecureStore";
 
 type StorageType = {
     username: string;
-    password?: string;
     authentication: IUser;
 };
 
 export default class User {
     private username: string;
-    private password?: string;
     private authentication: IUser;
 
-    constructor({ username, password, authentication }: StorageType) {
+    constructor({ username, authentication }: StorageType) {
         this.username = username;
-        this.password = password;
         this.authentication = authentication;
     }
 
@@ -29,7 +26,6 @@ export default class User {
     public async save() {
         await SecureStore.set("user", JSON.stringify({
             username: this.username,
-            password: this.password,
             authentication: this.authentication,
         }));
 
