@@ -6,38 +6,38 @@ import Typography from '@material-ui/core/Typography';
 import Link from '../components/Link';
 
 const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      textAlign: 'center',
-      paddingTop: theme.spacing(4),
-    },
-  })
+    createStyles({
+        root: {
+            textAlign: 'center',
+            paddingTop: theme.spacing(4),
+        },
+    })
 );
 
 function Next() {
-  const classes = useStyles({});
+    const classes = useStyles({});
 
-  return (
-    <React.Fragment>
-      <Head>
-        <title>Next - Nextron (with-typescript-material-ui)</title>
-      </Head>
-      <div className={classes.root}>
-        <Typography variant="h4" gutterBottom>
-          Material-UI
+    return (
+        <React.Fragment>
+            <Head>
+                <title>Next - Nextron (with-typescript-material-ui)</title>
+            </Head>
+            <div className={classes.root}>
+                <Typography variant="h4" gutterBottom>
+                    Material-UI
         </Typography>
-        <Typography variant="subtitle1" gutterBottom>
-          with Nextron
+                <Typography variant="subtitle1" gutterBottom>
+                    with Nextron
         </Typography>
-        <Typography gutterBottom>
-          <Link href="/home">Go to the home page</Link>
-        </Typography>
-        <Button variant="contained" color="primary">
-          Do nothing button
+                <Typography gutterBottom>
+                    <Link href="/home">Go to the home page</Link>
+                </Typography>
+                <Button variant="contained" color="primary">
+                    Do nothing button
         </Button>
-      </div>
-    </React.Fragment>
-  );
+            </div>
+        </React.Fragment>
+    );
 };
 
 export default Next;
