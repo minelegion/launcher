@@ -1,9 +1,7 @@
 import { createContext, PropsWithChildren, useContext, useEffect, useState } from "react";
-import { Authenticator } from "minecraft-launcher-core";
-import { Button } from "@material-ui/core";
 import LoadingScreen from "../LoadingScreen";
 import AuthenticationScreen from "../AuthenticationScreen";
-import User from "../../lib/User";
+import User from "@lib/User";
 import { useSnackbar } from "notistack";
 
 type UserContextType = {

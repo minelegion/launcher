@@ -58,11 +58,12 @@ const SettingsDialog = ({ open, onClose }: PropsType) => {
             }}
         >
             <Grid container>
-                <Grid item xs={4}>
+                <Grid item xs={12} md={4}>
                     <List className={classes.list}>
                         {Object.keys(pages).map((key) => (
                             <TabLink
                                 active={key === page}
+                                key={`${key}-settings-button`}
                                 // @ts-ignore
                                 onClick={() => setPage(key)}
                             >
@@ -76,7 +77,7 @@ const SettingsDialog = ({ open, onClose }: PropsType) => {
                         ))}
                     </List>
                 </Grid>
-                <Grid item xs={8} className={classes.root}>
+                <Grid item xs={12} md={8} className={classes.root}>
                     {pages[page].page}
                 </Grid>
             </Grid>

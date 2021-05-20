@@ -1,7 +1,7 @@
 import { Grid, IconButton, makeStyles, Tooltip, Typography } from "@material-ui/core";
 import { ExitToAppRounded as LogoutIcon } from "@material-ui/icons";
 import { useSnackbar } from "notistack";
-import { useUser } from "../../UserProvider";
+import { useUser } from "@components/UserProvider";
 
 const UserSection = () => {
     const { user, setUser } = useUser();

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button, Card, CardContent, Container, Grid, makeStyles, TextField } from "@material-ui/core";
 import { Authenticator } from "minecraft-launcher-core";
 import { useSnackbar } from "notistack";
-import User from "../../lib/User";
+import User from "@lib/User";
 import { useUser } from "../UserProvider";
 
 const AuthenticationScreen = () => {

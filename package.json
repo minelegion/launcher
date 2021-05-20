@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@material-ui/icons": "^4.11.2",
+    "@material-ui/lab": "^4.0.0-alpha.58",
     "electron-serve": "^1.1.0",
     "electron-store": "^7.0.3",
     "keytar": "^7.7.0",
