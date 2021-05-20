@@ -1,5 +1,4 @@
-import { Fragment, useState } from "react";
-import Image from "next/image";
+import { useState } from "react";
 import { Button, Card, CardContent, Container, Grid, makeStyles, TextField } from "@material-ui/core";
 import { Authenticator } from "minecraft-launcher-core";
 import { useSnackbar } from "notistack";
@@ -36,24 +35,17 @@ const AuthenticationScreen = () => {
     };
 
     return (
-        <Fragment>
-            <Image
-                src={"/images/landscape.png"}
-                layout={"fill"}
-                objectFit={"cover"}
-                className={classes.background}
-            />
-            <Grid container alignItems="center" className={classes.container}>
+        <div className={classes.background}>
+
+<Grid container alignItems="center" className={classes.container}>
                 <Grid item xs={12}>
                     <Container maxWidth={"sm"}>
                         <Card>
                             <CardContent>
                                 <Grid container spacing={2}>
                                     <Grid item xs={12} className={classes.logo}>
-                                        <Image
+                                        <img
                                             src={"/images/logo.png"}
-                                            width={513}
-                                            height={129}
                                         />
                                     </Grid>
                                     <Grid item xs={12}>
@@ -95,7 +87,7 @@ const AuthenticationScreen = () => {
                     </Container>
                 </Grid>
             </Grid>
-        </Fragment>
+        </div>
     );
 };
 
@@ -108,15 +100,16 @@ const isEmail = (email: string) => {
 const useStyles = makeStyles(() => ({
     container: {
         minHeight: "100vh",
-        backdropFilter: "blur(8px)"
+        backdropFilter: "blur(8px) brightness(50%)",
     },
     logo: {
-        marginRight: 64,
-        marginLeft: 64,
+        paddingRight: 64,
+        paddingLeft: 64,
+        maxWidth: "100%",
     },
     background: {
-        filter: "brightness(50%)",
-        zIndex: -1,
+        background: "url(/images/landscape.png)",
+        backgroundSize: "cover",
     },
 }));
 
