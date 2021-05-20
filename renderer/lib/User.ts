@@ -23,6 +23,10 @@ export default class User {
         return this.authentication.name;
     }
 
+    public getAvatarSrc() {
+        return `https://minelegion.hu/api/avatar/${this.getUsername()}`;
+    }
+
     public async save() {
         await SecureStore.set("user", JSON.stringify({
             username: this.username,

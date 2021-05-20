@@ -5,6 +5,7 @@ import { Button, Card, CardContent, Container, Grid, Hidden, IconButton, LinearP
 import { Client } from 'minecraft-launcher-core';
 import { ExitToApp as LogoutIcon, SettingsRounded } from '@material-ui/icons';
 import { useSnackbar } from 'notistack';
+import SettingsDialog from '../components/SettingsDialog';
 
 const launcher = new Client();
 
@@ -62,6 +63,7 @@ const HomeScreen = () => {
     const classes = useStyles({});
     const [progress, setProgress] = useState<number>(null);
     const [disabled, setDisabled] = useState(false);
+    const [open, setOpen] = useState(false);
 
     const { enqueueSnackbar } = useSnackbar();
     const { user, setUser } = useUser();
@@ -94,6 +96,7 @@ const HomeScreen = () => {
 
     return (
         <Fragment>
+            <SettingsDialog open={open} onClose={() => setOpen(false)} />
             <div className={classes.main}>
                 <div className={classes.container}>
                     <Container maxWidth={"sm"}>
@@ -126,13 +129,7 @@ const HomeScreen = () => {
 
                                     <Grid item>
                                         <IconButton
-                                            onClick={() => {
-                                                user.logout();
-                                                setUser(null);
-                                                enqueueSnackbar("Sikeres kijelentkezés!", {
-                                                    variant: "success", 
-                                                });
-                                            }}
+                                            onClick={() => setOpen(true)}
                                         >
                                             <SettingsRounded />
                                         </IconButton>
@@ -140,6 +137,9 @@ const HomeScreen = () => {
                                             onClick={() => {
                                                 user.logout();
                                                 setUser(null);
+                                                enqueueSnackbar("Sikeres kijelentkezés!", {
+                                                    variant: "success", 
+                                                });
                                             }}
                                         >
                                             <LogoutIcon />
