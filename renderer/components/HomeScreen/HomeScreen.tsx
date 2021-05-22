@@ -1,5 +1,7 @@
 import { Button, Card, Container, Grid, makeStyles, Paper } from "@material-ui/core";
 import { Fragment } from "react";
+import PlayButton from "./PlayButton";
+import UpdateCard from "./UpdateCard";
 import UserCard from "./UserCard";
 
 const HomeScreen = () => {
@@ -14,21 +16,16 @@ const HomeScreen = () => {
                             <Grid item xs={12}>
                                 <UserCard />
                             </Grid>
+                            <Grid item xs={12}>
+                                <UpdateCard />
+                            </Grid>
                         </Grid>
                     </Container>
                 </div>
             </div>
             <Paper square className={classes.bottom}>
                 <Container maxWidth={"sm"}>
-                    <Button
-                        fullWidth
-                        size={"large"}
-                        color={"primary"}
-                        variant={"contained"}
-                        className={classes.playButton}
-                    >
-                        Indítás
-                    </Button>
+                    <PlayButton />
                 </Container>
             </Paper>
         </Fragment>
@@ -43,9 +40,6 @@ const useStyles = makeStyles((theme) => ({
         minHeight: "100vh",
         paddingTop: theme.spacing(2),
         paddingBottom: theme.spacing(2) + BOTTOM_HEIGHT + 24,
-    },
-    playButton: {
-        marginTop: -24,
     },
     main: {
         background: "url(/images/landscape.png)",

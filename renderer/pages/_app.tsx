@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Head from 'next/head';
 import { ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -6,6 +6,8 @@ import { theme } from '../lib/theme';
 import type { AppProps } from 'next/app';
 import UserProvider from '../components/UserProvider';
 import { SnackbarProvider } from 'notistack';
+import AutoUpdaterProvider from '@renderer/components/AutoUpdaterProvider';
+import AutoUpdater from '@renderer/lib/AutoUpdater';
 
 const App = (props: AppProps) => {
     const { Component, pageProps } = props;
@@ -17,6 +19,15 @@ const App = (props: AppProps) => {
         }
     }, []);
 
+    const onLoad = async () => {
+        AutoUpdater.on((...args) => {
+            console.log(args);
+        });
+
+        console.log(await AutoUpdater.check());
+    };
+
+    useEffect(() => { onLoad() }, []);
     return (
         <React.Fragment>
             <Head>
@@ -27,7 +38,9 @@ const App = (props: AppProps) => {
                 <SnackbarProvider>
                     <CssBaseline />
                     <UserProvider>
-                        <Component {...pageProps} />
+                        <AutoUpdaterProvider>
+                            <Component {...pageProps} />
+                        </AutoUpdaterProvider>
                     </UserProvider>
                 </SnackbarProvider>
             </ThemeProvider>

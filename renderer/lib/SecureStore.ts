@@ -1,7 +1,4 @@
 import { ipcRenderer } from "electron";
-import { resolve } from "path";
-import { readConfigRequest, readConfigResponse, writeConfigRequest, writeConfigResponse } from "secure-electron-store";
-
 
 export default class SecureStore {
     public static async get(key: string): Promise<string> {

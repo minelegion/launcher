@@ -1,12 +1,34 @@
-appId: com.example.nextron
-productName: My Nextron App
-copyright: Copyright © 2018 Yoshihide Shiono
+productName: "MineLegion"
+appId: "minelegion.launcher"
+
+asar: true
+
 directories:
   output: dist
   buildResources: resources
+
 files:
   - from: .
     filter:
       - package.json
       - app
-publish: null
+
+win:
+  icon: "/renderer/public/images/favicon.ico"
+  target:
+    - "zip"
+    - "nsis"
+
+linux:
+  category: Development
+  target:
+    - "AppImage"
+    - "deb"
+    - "rpm"
+
+nsis:
+  oneClick: true
+  perMachine: true
+
+publish:
+  provider: "github"
