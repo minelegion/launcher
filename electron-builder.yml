@@ -27,8 +27,8 @@ linux:
     - "rpm"
 
 nsis:
-  oneClick: true
-  perMachine: true
+  oneClick: false
+  perMachine: false
 
 publish:
   provider: "github"
