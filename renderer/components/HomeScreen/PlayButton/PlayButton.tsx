@@ -1,5 +1,6 @@
 import { Button, makeStyles } from "@material-ui/core";
 import { useUser } from "@renderer/components/UserProvider";
+import Storage from "@renderer/lib/Storage";
 import { Client } from "minecraft-launcher-core";
 import { useState } from "react";
 
@@ -17,7 +18,7 @@ const PlayButton = () => {
         launcher.launch({
             clientPackage: null,
             authorization: (async () => user.getAuthentication())(),
-            root: "./minecraft",
+            root: `${Storage.getPath('userData')}/minecraft`,
             version: {
                 number: "1.16.5",
                 type: "release"

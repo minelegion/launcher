@@ -61,6 +61,10 @@ if (isProd) {
     ipcMain.on("auto-updater-quit-and-install", async () => {
         await autoUpdater.quitAndInstall();
     });
+
+    ipcMain.handle("app-get-path", async (event, name) => {
+        return await app.getPath(name);
+    });
     
     if (isProd) {
         await mainWindow.loadURL('app://./home.html');

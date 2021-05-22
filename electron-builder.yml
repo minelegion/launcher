@@ -27,7 +27,7 @@ linux:
     - "rpm"
 
 nsis:
-  oneClick: false
+  oneClick: true
   perMachine: false
 
 publish:
