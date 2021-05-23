@@ -28,7 +28,7 @@ linux:
 
 nsis:
   oneClick: true
-  perMachine: false
+  perMachine: true
 
 publish:
   provider: "github"
