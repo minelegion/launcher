@@ -12,13 +12,13 @@ const PlayButton = () => {
 
     const [disabled, setDisabled] = useState(false);
 
-    const play = () => {
+    const play = async () => {
         setDisabled(true);
 
         launcher.launch({
             clientPackage: null,
             authorization: (async () => user.getAuthentication())(),
-            root: `${Storage.getPath('userData')}/minecraft`,
+            root: `${await Storage.getPath('userData')}/minecraft`,
             version: {
                 number: "1.16.5",
                 type: "release"
