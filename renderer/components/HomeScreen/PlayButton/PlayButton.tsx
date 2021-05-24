@@ -3,6 +3,7 @@ import { useUser } from "@renderer/components/UserProvider";
 import Storage from "@renderer/lib/Storage";
 import { Client } from "minecraft-launcher-core";
 import { useState } from "react";
+import { useJava } from "../UserCard/SettingsDialog/JavaSection/JavaSection";
 
 const launcher = new Client();
 
@@ -10,13 +11,14 @@ const PlayButton = () => {
     const { user } = useUser();
     const classes = useStyles();
 
+    const {min, max} = useJava();
     const [disabled, setDisabled] = useState(false);
 
     const play = async () => {
         setDisabled(true);
 
         launcher.launch({
-            clientPackage: null,
+            clientPackage: "https://raw.githubusercontent.com/minelegion/launcher/main/resources/client_packages.zip",
             authorization: (async () => user.getAuthentication())(),
             root: `${await Storage.getPath('userData')}/minecraft`,
             version: {
@@ -24,8 +26,8 @@ const PlayButton = () => {
                 type: "release"
             },
             memory: {
-                max: "6G",
-                min: "4G"
+                max,
+                min,
             }
         });
 

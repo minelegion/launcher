@@ -8,6 +8,7 @@ import UserProvider from '../components/UserProvider';
 import { SnackbarProvider } from 'notistack';
 import AutoUpdaterProvider from '@renderer/components/AutoUpdaterProvider';
 import AutoUpdater from '@renderer/lib/AutoUpdater';
+import { JavaProvider } from '@renderer/components/HomeScreen/UserCard/SettingsDialog/JavaSection/JavaSection';
 
 const App = (props: AppProps) => {
     const { Component, pageProps } = props;
@@ -39,7 +40,9 @@ const App = (props: AppProps) => {
                     <CssBaseline />
                     <UserProvider>
                         <AutoUpdaterProvider>
-                            <Component {...pageProps} />
+                            <JavaProvider>
+                                <Component {...pageProps} />
+                            </JavaProvider>
                         </AutoUpdaterProvider>
                     </UserProvider>
                 </SnackbarProvider>

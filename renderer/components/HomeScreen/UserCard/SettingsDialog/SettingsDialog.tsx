@@ -4,17 +4,12 @@ import { useState } from "react";
 import JavaIcon from "./JavaIcon";
 import JavaSection from "./JavaSection";
 import TabLink from "./TabLink";
+import UpdatesSection from "./UpdatesSection";
 import UserSection from "./UserSection";
 
 type PropsType = {
     open: boolean;
     onClose: () => void;
-};
-
-const UpdatesSection = () => {
-    return (
-        <div />
-    );
 };
 
 const pages = {
