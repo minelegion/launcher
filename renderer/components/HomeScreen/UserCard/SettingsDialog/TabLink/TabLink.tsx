@@ -1,8 +1,8 @@
 import { ListItem, ListItemProps, makeStyles } from "@material-ui/core";
 
-type PropsType = {
+type PropsType = ListItemProps & {
     active: boolean;
-} & ListItemProps;
+};
 
 const TabLink = (props: PropsType) => {
     const classes = useStyles();
