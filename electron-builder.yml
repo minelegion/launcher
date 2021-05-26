@@ -14,7 +14,7 @@ files:
       - app
 
 win:
-  icon: "/renderer/public/images/favicon.ico"
+  icon: "/resources/icon.ico"
   target:
     - "zip"
     - "nsis"
