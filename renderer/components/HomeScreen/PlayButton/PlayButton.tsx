@@ -41,15 +41,11 @@ const PlayButton = () => {
         launcher.on('data', (e) => console.log(e));
 
         launcher.on("progress", setState);
-
         launcher.on("download-status", setState);
 
         const root = `${await Storage.getPath('userData')}/minecraft`;
-        const clientPackage = fs.existsSync(`${root}/options.txt`) ? null :" https://raw.githubusercontent.com/minelegion/launcher/main/resources/client_packages.zip";
 
         await launcher.launch({
-            clientPackage,
-            removePackage: true,
             authorization: (async () => user.getAuthentication())(),
             root,
             version: {
