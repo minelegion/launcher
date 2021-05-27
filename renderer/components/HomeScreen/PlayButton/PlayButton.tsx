@@ -93,11 +93,6 @@ const PlayButton = () => {
 };
 
 const prepare = async () => {
-    const url = "https://raw.githubusercontent.com/minelegion/launcher/main/resources/servers.dat";
-    const dest = `${await Storage.getPath('userData')}/minecraft/servers.dat`;
-
-    if(fs.existsSync(dest)) return;
-
     const download = async (url, dest) => {
         var file = fs.createWriteStream(dest);
         const resp = await https.get(url)
@@ -108,7 +103,23 @@ const prepare = async () => {
         });
     }
 
-    await download(url, dest);
+    const files = [
+        {
+            name: "servers.dat",
+            url: "https://raw.githubusercontent.com/minelegion/launcher/main/resources/servers.dat",
+        },
+        {
+            name: "options.txt",
+            url: "https://raw.githubusercontent.com/minelegion/launcher/main/resources/options.txt"
+        }
+    ];
+
+    for(const file of files) {
+        const dest = `${await Storage.getPath('userData')}/minecraft/${file.name}`;
+        if(fs.existsSync(dest)) continue;
+
+        await download(file.url, dest);
+    }
 };
 
 const useStyles = makeStyles((theme) => ({
