@@ -5,6 +5,7 @@ import { Client } from "minecraft-launcher-core";
 import { Fragment, useState } from "react";
 import { useJava } from "../UserCard/SettingsDialog/JavaSection/JavaSection";
 import fs from "fs";
+import https from "https";
 
 const launcher = new Client();
 
@@ -27,7 +28,7 @@ const PlayButton = () => {
     const { user } = useUser();
     const classes = useStyles();
 
-    const {min, max} = useJava();
+    const { min, max } = useJava();
     const [disabled, setDisabled] = useState(false);
     const [state, setState] = useState<ProgressType>(null);
 
@@ -44,6 +45,8 @@ const PlayButton = () => {
         launcher.on("download-status", setState);
 
         const root = `${await Storage.getPath('userData')}/minecraft`;
+
+        await prepare();
 
         await launcher.launch({
             authorization: (async () => user.getAuthentication())(),
@@ -87,6 +90,25 @@ const PlayButton = () => {
             </Dialog>
         </Fragment>
     );
+};
+
+const prepare = async () => {
+    const url = "https://raw.githubusercontent.com/minelegion/launcher/main/resources/servers.dat";
+    const dest = `${await Storage.getPath('userData')}/minecraft/servers.dat`;
+
+    if(fs.existsSync(dest)) return;
+
+    const download = async (url, dest) => {
+        var file = fs.createWriteStream(dest);
+        const resp = await https.get(url)
+
+        resp.pipe(file);
+        file.on('finish', function () {
+            file.close();
+        });
+    }
+
+    await download(url, dest);
 };
 
 const useStyles = makeStyles((theme) => ({
