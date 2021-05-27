@@ -94,12 +94,12 @@ const PlayButton = () => {
 
 const prepare = async () => {
     const download = async (url, dest) => {
-        var file = fs.createWriteStream(dest);
-        const resp = await https.get(url)
-
-        resp.pipe(file);
-        file.on('finish', function () {
-            file.close();
+        https.get(url, (resp) => {
+            const file = fs.createWriteStream(dest);
+            resp.pipe(file);
+            file.on('finish', function () {
+                file.close();
+            });
         });
     }
 
