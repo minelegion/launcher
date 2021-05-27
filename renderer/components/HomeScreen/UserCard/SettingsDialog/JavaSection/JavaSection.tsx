@@ -21,25 +21,11 @@ type JavaContextType = {
 const JavaContext = createContext<JavaContextType>(null);
 
 export const JavaProvider = ({ children }: PropsWithChildren<{}>) => {
-    const store = new Store({
-        name: "java-settings-storage",
-        defaults: {
-            "java-min-ram": 4194304,
-            "java-max-ram": 6291456,
-        },
-    });
+    const store = new Store();
 
     const [min, setMin] = useState(4194304);
     const [max, setMax] = useState(6291456);
-
-    useEffect(() => {
-        store.set("java-min-ram", min);
-    }, [min]);
-
-    useEffect(() => {
-        store.set("java-max-ram", max);
-    }, [max]);
-
+    
     useEffect(() => {
         (async () => {
             const [storedMin, storedMax] = await Promise.all([    
@@ -47,7 +33,10 @@ export const JavaProvider = ({ children }: PropsWithChildren<{}>) => {
                 store.get("java-max-ram"),
             ]);
 
+            // @ts-ignore
             if(storedMin) setMin(storedMin);
+
+            // @ts-ignore
             if(storedMax) setMax(storedMax);
         })();
     }, []);
@@ -60,6 +49,8 @@ export const JavaProvider = ({ children }: PropsWithChildren<{}>) => {
 };
 
 const JavaSection = () => {
+    const store = new Store();
+
     const { min, setMin, max, setMax } = useContext(JavaContext);
 
     return (
@@ -70,6 +61,9 @@ const JavaSection = () => {
             <Slider
                 step={512 * 1024}
                 onChange={(e, value) => {
+                    store.set("java-min-ram", min);
+                    store.set("java-max-ram", max);
+
                     setMin(value[0]);
                     setMax(value[1]);
                 }}
