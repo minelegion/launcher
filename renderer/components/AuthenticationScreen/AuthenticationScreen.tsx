@@ -36,8 +36,7 @@ const AuthenticationScreen = () => {
 
     return (
         <div className={classes.background}>
-
-<Grid container alignItems="center" className={classes.container}>
+            <Grid container alignItems="center" className={classes.container}>
                 <Grid item xs={12}>
                     <Container maxWidth={"sm"}>
                         <Card>
@@ -45,6 +44,7 @@ const AuthenticationScreen = () => {
                                 <Grid container spacing={2}>
                                     <Grid item xs={12} className={classes.logo}>
                                         <img
+                                            className={classes.image}
                                             src={"/images/logo.png"}
                                         />
                                     </Grid>
@@ -105,6 +105,9 @@ const useStyles = makeStyles(() => ({
     logo: {
         paddingRight: 64,
         paddingLeft: 64,
+        maxWidth: "100%",
+    },
+    image: {
         maxWidth: "100%",
     },
     background: {
