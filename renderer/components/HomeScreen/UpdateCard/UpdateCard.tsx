@@ -15,12 +15,8 @@ const UpdateCard = () => {
                         <UpdateIcon />
                     </Grid>
                     <Grid item className={classes.middle}>
-                        <Typography noWrap>
-                            <UpdateTitle />
-                        </Typography>
-                        <Typography noWrap variant={"body2"}>
-                            <UpdateDescription />
-                        </Typography>
+                        <UpdateTitle />
+                        <UpdateDescription />
                     </Grid>
                     {state.state === "update-downloaded" && (
                         <QuitAndInstallButton />

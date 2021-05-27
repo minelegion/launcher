@@ -17,9 +17,7 @@ const UpdatesSection = () => {
             </Grid>
             <Grid item>    
                 <UpdateTitle />
-                <Typography variant="body2">    
-                    <UpdateDescription />
-                </Typography>
+                <UpdateDescription />
             </Grid>
             {state === "update-downloaded" && (
                 <Grid item className={classes.right}>
