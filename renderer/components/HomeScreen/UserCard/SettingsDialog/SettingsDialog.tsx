@@ -43,9 +43,6 @@ const SettingsDialog = ({ open, onClose }: PropsType) => {
             maxWidth={"md"}
             fullWidth
             className={classes.dialog}
-            style={{
-                backdropFilter: "blur(8px)",
-            }}
             PaperProps={{
                 style: {
                     overflowX: "hidden",
