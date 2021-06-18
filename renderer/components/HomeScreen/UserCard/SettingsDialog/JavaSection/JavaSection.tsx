@@ -23,8 +23,8 @@ const JavaContext = createContext<JavaContextType>(null);
 export const JavaProvider = ({ children }: PropsWithChildren<{}>) => {
     const store = new Store();
 
-    const [min, setMin] = useState(4194304);
-    const [max, setMax] = useState(6291456);
+    const [min, setMin] = useState(1048576);
+    const [max, setMax] = useState(2097152);
     
     useEffect(() => {
         (async () => {
@@ -61,8 +61,8 @@ const JavaSection = () => {
             <Slider
                 step={512 * 1024}
                 onChange={(e, value) => {
-                    store.set("java-min-ram", min);
-                    store.set("java-max-ram", max);
+                    store.set("java-min-ram", value[0]);
+                    store.set("java-max-ram", value[1]);
 
                     setMin(value[0]);
                     setMax(value[1]);

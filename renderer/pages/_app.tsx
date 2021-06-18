@@ -10,8 +10,7 @@ import AutoUpdaterProvider from '@renderer/components/AutoUpdaterProvider';
 import AutoUpdater from '@renderer/lib/AutoUpdater';
 import { JavaProvider } from '@renderer/components/HomeScreen/UserCard/SettingsDialog/JavaSection/JavaSection';
 
-const App = (props: AppProps) => {
-    const { Component, pageProps } = props;
+const App = ({ Component, pageProps }: AppProps) => {
 
     React.useEffect(() => {
         const jssStyles = document.querySelector('#jss-server-side');
