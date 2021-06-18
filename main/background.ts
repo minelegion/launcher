@@ -21,6 +21,7 @@ if (isProd) {
         minHeight: 300,
         minWidth: 300,
         autoHideMenuBar: true,
+        title: "MineLegion"
     });
 
     initSecureStore();
